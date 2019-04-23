@@ -9,22 +9,27 @@ class ToDoList extends Component {
         super(props);
 
         this.state = {
-            items: [new ToDoItem(1, "first item"),],
+            items: [],
         };
 
         this.addItem = this.addItem.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
     }
 
-    deleteItem(i) {
-        console.log('delete item by: ' + i);
-        // TODO: закончить пример - удалить єлемент списка
+    deleteItem(id) {
+        console.log('delete item by: ' + id);
+        const idx = this.state.items.findIndex(item => item.Id === id);
+        this.state.items.splice(idx, 1);
+        this.setState({
+            items: this.state.items
+        });        
     }
 
     addItem() {
         let text = document.querySelector("#text").value;
         console.log("Add item: " + text);
-        let id = this.state.items.length + 1;
+        let id = Math.max(...this.state.items.map(item => item.Id)) + 1;
+        id = isFinite(id) ? id : 1;
         let item = new ToDoItem(id, text);
         this.state.items.push(item);
         this.setState({

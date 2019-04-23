@@ -9,7 +9,7 @@ class ListItem extends Component {
                 <td>{this.props.item.Id}</td>
                 <td contentEditable>{this.props.item.Text}</td>
                 <td><img className='delete' 
-                         onClick={() => this.props.callback(this.props.key)}
+                         onClick={() => this.props.callback(this.props.item.Id)}
                          src={img} width='24' alt="delete item"/></td>
             </tr>
         );
