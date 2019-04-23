@@ -2,24 +2,24 @@
 
 Start new app using `create-react-app` package:
 
-`cmd
+```cmd
 $ npm install create-react-app -g
 $ create-react-app react-app
-`
+```
 
 Run app:
 
-`cmd
+```cmd
 $ npm start
-`
+```
 
 Start new .Net Core app with `react.js`:
 
-`bash
+```cmd
 $ mkdir core-react-app
 $ cd core-react-app
 $ dotnet new react
-`
+```
 
 ## Usefull links
 
