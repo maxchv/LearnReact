@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import Panel from './Panel';
+import About from './About';
+import {Link, Route} from 'react-router-dom';
 
 class App extends React.Component {
   constructor() {
@@ -20,8 +22,21 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">      
-        <Panel callback={this.updateMessage} message={this.state.message} />             
+      <div className="App">  
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/About">About</Link>
+            </li>
+          </ul>
+        </nav>    
+        <Route path="/" exact={true}
+                render={() => (<Panel callback={this.updateMessage} message={this.state.message} />)}/>
+        <Route path="/About"
+               component={About} />
       </div>
     );
   }
