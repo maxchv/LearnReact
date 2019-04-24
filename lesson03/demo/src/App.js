@@ -6,7 +6,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      message: "Panel"
+      message: ''
     };
 
     this.updateMessage = this.updateMessage.bind(this);
@@ -14,15 +14,14 @@ class App extends React.Component {
 
   updateMessage() {
     this.setState({
-      message: "New message"
+      message: `New message ${new Date().toLocaleTimeString()}`
     });
   }
 
   render() {
     return (
       <div className="App">      
-        <Panel message={this.state.message} />      
-        <button onClick={this.updateMessage}>Update Outside</button>
+        <Panel callback={this.updateMessage} message={this.state.message} />             
       </div>
     );
   }

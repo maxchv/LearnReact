@@ -1,61 +1,25 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 class Panel extends Component {
-
-    constructor() {
-        super();
-        console.log("Constructor Panel");
-        this.state = {
-            message: undefined
-        };
-        this.updateState = this.updateState.bind(this);
-        this.outside = true;
-    }
-
-    updateState() {
-        console.log("updateState");
-        this.setState({
-            message: `Update at ${new Date().toLocaleTimeString()}`
-        });
-        this.outside = false;
-    }
-
-    componentWillMount(){
-        console.log("Will Mount Panel");
-    }
     
-    componentDidMount() {
-        console.log("Did Mount Panel");
-    }
-
-    componentWillUpdate() {
-        console.log("Will Update Panel");
-    }
-
-    componentDidUpdate() {
-        console.log("Did Update Panel");
-    }
-
-    componentWillUnmount() {
-        console.log("Will Unmoun Panel");
-    }
-
-    componentWillReceiveProps(oldProps, newProps) {
-        console.log("Will Receive Props");
-        console.log(oldProps);
-        console.log(newProps);   
-        this.outside = true;     
-    }
-
-    render() {
-        console.log(`Render Panel ${this.props.message}`);        
+    render() {             
         return <div>
             <div>
-                {this.outside ? this.props.message : this.state.message}
+                {this.props.message}
             </div>
-            <button onClick={this.updateState}>Update Inside</button>
+            <button onClick={() => this.props.callback()}>Update</button>
         </div>;
     }
+}
+
+Panel.defaultProps = {
+    message: "Default message"
+}
+
+Panel.propTypes = {
+    message: PropTypes.string.isRequired,
+    callback: PropTypes.func.isRequired    
 }
 
 export default Panel;
